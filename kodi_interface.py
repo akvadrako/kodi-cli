@@ -392,7 +392,9 @@ class KodiObj():
                 parm_value = parm_entry.get('default', None)
             if parm_value is not None:
                 LOGGER.trace(f'    Key    : {parm_name:15}  Value: {parm_value}')
-                if isinstance(parm_value, int):
+                if isinstance(parm_value, bool):
+                    req_parms[parm_name] = bool(parm_value)
+                elif isinstance(parm_value, int):
                     req_parms[parm_name] = int(parm_value)
                 else:
                     req_parms[parm_name] = parm_value
